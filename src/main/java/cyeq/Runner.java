@@ -74,7 +74,7 @@ public class Runner {
 
             if (sheet != null) {
                 Row row = sheet.getRow(startRow++);
-                Cell cell = row.createCell(2);
+                Cell cell = row.createCell(3);
                 if (passed) {
                     cell.setCellValue("PASS");
                 } else {

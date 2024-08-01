@@ -12,7 +12,6 @@ public class Main {
     }
     private static void loadNativeLibraries() {
         try {
-            // Extract and load the shared libraries from the JAR
             loadLibraryFromJar("/lib/libz3.so");
             loadLibraryFromJar("/lib/libz3java.so");
         } catch (IOException e) {

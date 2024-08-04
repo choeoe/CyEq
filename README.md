@@ -1,19 +1,24 @@
-# CyEq: Proving the Cypher Query Equivalence 
+# CyEq: Proving Cypher Query Equivalence 
 
-## Introduction
+CyEq is an automated prover to determine whether two Cypher queries are semantically equivalent.
+In CyEq, we model Cypher queries as U-semiring based Cypher expressions, and prove the equivalence of Cypher queries using constraint solvers theory.
+We further construct an equivalent Cypher query dataset CyEqBench that contain 145 pairs of equivalent Cypher queries. 
+We evaluate CyEq on this dataset, and have proved 139 pairs of equivalent Cypher
+queries.
 
-CyEq is a tool designed to prove the equivalence of Cypher queries in graph
-databases. This tool helps users ensure that different Cypher queries return the
-same results, which is essential for optimization and reliability checking in graph
-database systems.
+## CyEqBench
 
+We construct a dataset CyEqBench with 145 equivalent Cypher query pairs from the following two approaches.
+ + By translating the open-source equivalent SQL query pairs from Calcite into equivalent Cypher query pairs, we obtain 77 equivalent Cypher query pairs. 
+ + By constructing equivalent Cypher query pairs by rewriting Cypher queries using existing equivalent rewriting rules, we obtain 68 equivalent Cypher query pairs.
+ 
 ## Requirements
 
 To run CyEq, ensure your system meets the following requirements:
 
 - **Java Development Kit (JDK)**: Version 17
 - **Maven**: Version 3.8 or higher
-- **ubuntu**: 1804
+- **Operator System**: Ubuntu 1804
 
 ## Installation
 
@@ -35,7 +40,7 @@ To run CyEq, ensure your system meets the following requirements:
 3. **Or run the application using our script**:
 
     ```sh
-    Bash run.sh
+    bash run.sh
     ```
 
 ## Usage
@@ -52,7 +57,7 @@ To use CyEq, follow these steps:
     ```
     otherwise
     ```sh
-    Bash run.sh
+    bash run.sh
     ```
 
 3. **Review the results**: CyEq will write the verification result back into the
@@ -60,17 +65,5 @@ To use CyEq, follow these steps:
    that if a Cypher query pair is proven NQE, it still might be equivalent,
    since CyEq is incomlete.
 
-## Test Data
-
-CyEq includes a set of test data for evaluating the tool's effectiveness. The
-test data consists of 145 equivalent Cypher queries to ensure comprehensive
-coverage of different query structures and graph patterns.
-
-### Example Test Dataset
-
-- **CyEqBench ver 1**: The dataset is in /dataset/dataset.xlsx, which contains 145 equivalent Cypher query pairs
-  from:
-    + translation from Calcite.
-    + transformation from real-word Cypher queries.
-
-
+## Test Result
+CyEq has successfully proved 139/145 pairs of equivalent Cypher queries in CyEqBench.
